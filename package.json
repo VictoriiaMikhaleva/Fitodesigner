@@ -1,0 +1,39 @@
+{
+  "name": "fitodesigner",
+  "version": "1.0.0",
+  "description": "A game for designers who want to learn how to select plants according to conditions",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "convert:plants": "tsx scripts/convertPlantsExcelToJson.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictoriiaMikhaleva/Fitodesigner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VictoriiaMikhaleva/Fitodesigner/issues"
+  },
+  "homepage": "https://github.com/VictoriiaMikhaleva/Fitodesigner#readme",
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.16",
+    "@types/react-dom": "^19.2.3",
+    "tailwindcss": "^4.3.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "xlsx": "^0.18.5"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "vite": "^8.0.16"
+  }
+}

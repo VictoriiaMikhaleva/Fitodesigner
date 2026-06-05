@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sage-50: #f4f8f1;
+  --color-sage-100: #e7f0e1;
+  --color-sage-200: #d2e3c8;
+  --color-sage-300: #b4cfa4;
+  --color-sage-400: #8fad7f;
+  --color-sage-500: #6f9462;
+  --color-sage-600: #56764b;
+  --color-sage-700: #435c3b;
+  --color-sage-800: #354830;
+  --color-sand-50: #faf7f2;
+  --color-sand-100: #f2ebe1;
+  --color-sand-200: #e6d9c8;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-gradient-to-b from-sage-50 via-sand-50 to-sage-100 text-sage-800 antialiased;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border border-sage-200/80 bg-white/90 shadow-[0_18px_50px_rgba(53,72,48,0.08)] backdrop-blur-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-2xl bg-sage-600 px-5 py-3 font-medium text-white transition hover:bg-sage-700;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-2xl border border-sage-200 bg-white px-5 py-3 font-medium text-sage-700 transition hover:bg-sage-50;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-sage-600;
+  }
+
+  .field-input {
+    @apply w-full rounded-xl border border-sage-200 bg-white px-3 py-2.5 text-sage-800 outline-none transition focus:border-sage-400 focus:ring-2 focus:ring-sage-200;
+  }
+}
