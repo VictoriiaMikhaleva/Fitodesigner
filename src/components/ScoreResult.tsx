@@ -1,7 +1,9 @@
+import { AnimatedScoreRing } from "./AnimatedScoreRing";
 import type { ScoreResult as ScoreResultData } from "../types";
 
 type ScoreResultProps = {
   result: ScoreResultData;
+  xpGained?: number;
 };
 
 function scoreTone(score: number): string {
@@ -10,17 +12,22 @@ function scoreTone(score: number): string {
   return "text-red-700 bg-red-50";
 }
 
-export function ScoreResult({ result }: ScoreResultProps) {
+export function ScoreResult({ result, xpGained }: ScoreResultProps) {
   return (
     <section className="card space-y-6 p-5">
-      <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="grid gap-6 lg:grid-cols-[auto_1fr] lg:items-center">
+        <AnimatedScoreRing score={result.totalScore} level={result.level} />
+
         <div>
           <p className="text-sm font-medium text-sage-500">Результат проверки</p>
-          <h2 className="mt-1 text-3xl font-semibold text-sage-800">{result.totalScore} / 100</h2>
-          <p className="mt-2 text-lg text-sage-700">{result.level}</p>
-        </div>
-        <div className="rounded-2xl bg-sage-100 px-4 py-3 text-sm text-sage-700">
-          Разбор по каждому растению ниже
+          {xpGained !== undefined && (
+            <p className="mt-2 inline-flex rounded-full bg-sage-100 px-3 py-1 text-sm font-medium text-sage-700">
+              +{xpGained} XP
+            </p>
+          )}
+          <div className="mt-4 rounded-2xl bg-sage-50 px-4 py-3 text-sm text-sage-700">
+            Разбор по каждому растению — ниже. Используйте его, чтобы улучшить следующий подбор.
+          </div>
         </div>
       </div>
 
@@ -66,8 +73,12 @@ export function ScoreResult({ result }: ScoreResultProps) {
       <div>
         <h3 className="font-semibold text-sage-800">Разбор по растениям</h3>
         <div className="mt-3 space-y-4">
-          {result.plantResults.map((entry) => (
-            <article key={entry.plantId} className="rounded-2xl border border-sage-200 p-4">
+          {result.plantResults.map((entry, index) => (
+            <article
+              key={entry.plantId}
+              className="rounded-2xl border border-sage-200 p-4 animate-slide-up"
+              style={{ animationDelay: `${index * 80}ms` }}
+            >
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <h4 className="font-semibold text-sage-800">{entry.plantName}</h4>
                 <span className={`rounded-full px-3 py-1 text-sm font-medium ${scoreTone(entry.score)}`}>

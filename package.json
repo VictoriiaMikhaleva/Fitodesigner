@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/VictoriiaMikhaleva/Fitodesigner/issues"
   },
-  "homepage": "https://github.com/VictoriiaMikhaleva/Fitodesigner#readme",
+  "homepage": "https://victoriiamikhaleva.github.io/Fitodesigner/",
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^25.9.1",

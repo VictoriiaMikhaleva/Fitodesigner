@@ -5,10 +5,12 @@ import { PlantCatalog } from "./components/PlantCatalog";
 import { TrainingScreen } from "./components/TrainingScreen";
 import { hasPlantsData, plants } from "./data/plantsLoader";
 import type { AppScreen } from "./types";
+import { loadProgress, type GameProgress } from "./utils/gameProgress";
 
 export function App() {
   const [screen, setScreen] = useState<AppScreen>("home");
   const [catalogSelection, setCatalogSelection] = useState<string[]>([]);
+  const [progress, setProgress] = useState<GameProgress>(() => loadProgress());
   const plantsAvailable = useMemo(() => hasPlantsData(), []);
 
   if (!plantsAvailable) {
@@ -32,18 +34,29 @@ export function App() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
       <div className="space-y-6">
-        <Header onHome={() => setScreen("home")} onCatalog={() => setScreen("catalog")} />
+        <Header
+          onHome={() => setScreen("home")}
+          onCatalog={() => setScreen("catalog")}
+          progress={progress}
+          showHud={screen !== "home"}
+        />
 
         {screen === "home" && (
           <HomeScreen
             plantsCount={plants.length}
+            progress={progress}
             onStartTraining={() => setScreen("training")}
             onOpenCatalog={() => setScreen("catalog")}
           />
         )}
 
         {screen === "training" && (
-          <TrainingScreen plants={plants} onBackHome={() => setScreen("home")} />
+          <TrainingScreen
+            plants={plants}
+            progress={progress}
+            onProgressChange={setProgress}
+            onBackHome={() => setScreen("home")}
+          />
         )}
 
         {screen === "catalog" && (

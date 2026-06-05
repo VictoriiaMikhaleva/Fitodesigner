@@ -50,3 +50,78 @@
     @apply w-full rounded-xl border border-sage-200 bg-white px-3 py-2.5 text-sage-800 outline-none transition focus:border-sage-400 focus:ring-2 focus:ring-sage-200;
   }
 }
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(86, 118, 75, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(86, 118, 75, 0);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 0.35s ease-out;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.35s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.45s ease-out both;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+.confetti-piece {
+  top: -5vh;
+  animation: confetti-fall linear forwards;
+}

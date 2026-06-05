@@ -31,8 +31,8 @@ export function PlantCard({
       onClick={interactive ? () => onToggle?.(plant) : undefined}
       className={`w-full rounded-2xl border p-4 text-left transition ${
         selected
-          ? "border-sage-500 bg-sage-50 shadow-[0_0_0_2px_rgba(111,148,98,0.15)]"
-          : "border-sage-200 bg-white hover:border-sage-300"
+          ? "border-sage-500 bg-sage-50 shadow-[0_0_0_2px_rgba(111,148,98,0.15)] animate-pop-in"
+          : "border-sage-200 bg-white hover:border-sage-300 hover:-translate-y-0.5"
       } ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
     >
       <div className="flex gap-4">

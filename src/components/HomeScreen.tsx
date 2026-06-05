@@ -1,26 +1,42 @@
+import { ACHIEVEMENTS } from "../utils/gameProgress";
+import type { GameProgress } from "../utils/gameProgress";
+import { GameHud } from "./GameHud";
+
 type HomeScreenProps = {
   plantsCount: number;
+  progress: GameProgress;
   onStartTraining: () => void;
   onOpenCatalog: () => void;
 };
 
 const FEATURES = [
   "Реальные параметры растений из учебного каталога",
-  "Тренировка подбора под интерьер и бриф клиента",
+  "XP, уровни и достижения за каждый бриф",
   "Разбор ошибок и рекомендации после проверки",
   "Три уровня сложности: новичок, практик, профи",
 ];
 
 const STEPS = [
-  "Получите бриф с условиями помещения.",
-  "Изучите свет, влажность, температуру и требования клиента.",
-  "Соберите подбор в каталоге и проверьте решение.",
-  "Разберите баллы, риски и рекомендации по каждому растению.",
+  "Выберите уровень и получите бриф-квест.",
+  "Изучите условия и соберите подбор из каталога.",
+  "Проверьте решение и получите XP, серию и достижения.",
+  "Разберите ошибки и улучшите следующий раунд.",
 ];
 
-export function HomeScreen({ plantsCount, onStartTraining, onOpenCatalog }: HomeScreenProps) {
+export function HomeScreen({
+  plantsCount,
+  progress,
+  onStartTraining,
+  onOpenCatalog,
+}: HomeScreenProps) {
+  const unlocked = progress.achievements
+    .map((id) => ACHIEVEMENTS[id])
+    .filter(Boolean);
+
   return (
     <div className="space-y-6">
+      <GameHud progress={progress} />
+
       <section className="card overflow-hidden">
         <div className="grid gap-6 p-6 lg:grid-cols-[1.3fr_0.7fr] lg:p-8">
           <div>
@@ -35,7 +51,7 @@ export function HomeScreen({ plantsCount, onStartTraining, onOpenCatalog }: Home
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <button type="button" className="btn-primary" onClick={onStartTraining}>
+              <button type="button" className="btn-primary animate-pulse-soft" onClick={onStartTraining}>
                 Начать тренировку
               </button>
               <button type="button" className="btn-secondary" onClick={onOpenCatalog}>
@@ -45,20 +61,50 @@ export function HomeScreen({ plantsCount, onStartTraining, onOpenCatalog }: Home
           </div>
 
           <div className="rounded-3xl bg-gradient-to-br from-sage-100 via-sand-100 to-sage-200 p-6">
-            <p className="text-sm font-medium text-sage-600">Каталог</p>
-            <p className="mt-2 text-4xl font-semibold text-sage-800">{plantsCount}</p>
-            <p className="mt-2 text-sm text-sage-600">растений готово к тренировке</p>
-            <div className="mt-6 rounded-2xl bg-white/70 p-4 text-sm text-sage-700">
-              Excel используется только как источник для генерации JSON. Приложение работает с
-              `plants.json`.
+            <p className="text-sm font-medium text-sage-600">Игровая статистика</p>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+              <div className="rounded-2xl bg-white/70 p-3">
+                <p className="text-sage-500">Брифов пройдено</p>
+                <p className="text-2xl font-semibold text-sage-800">{progress.roundsPlayed}</p>
+              </div>
+              <div className="rounded-2xl bg-white/70 p-3">
+                <p className="text-sage-500">Каталог</p>
+                <p className="text-2xl font-semibold text-sage-800">{plantsCount}</p>
+              </div>
+              <div className="rounded-2xl bg-white/70 p-3">
+                <p className="text-sage-500">Серия</p>
+                <p className="text-2xl font-semibold text-sage-800">{progress.streak} 🔥</p>
+              </div>
+              <div className="rounded-2xl bg-white/70 p-3">
+                <p className="text-sage-500">Достижения</p>
+                <p className="text-2xl font-semibold text-sage-800">{unlocked.length}</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {unlocked.length > 0 && (
+        <section className="card p-6">
+          <h3 className="text-xl font-semibold text-sage-800">Ваши достижения</h3>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {unlocked.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center gap-2 rounded-2xl border border-sage-200 bg-sage-50 px-4 py-3"
+                title={item.description}
+              >
+                <span className="text-xl">{item.icon}</span>
+                <span className="text-sm font-medium text-sage-800">{item.title}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="grid gap-6 lg:grid-cols-2">
         <article className="card p-6">
-          <h3 className="text-xl font-semibold text-sage-800">Как работает тренажёр</h3>
+          <h3 className="text-xl font-semibold text-sage-800">Как работает игра</h3>
           <ol className="mt-4 space-y-3">
             {STEPS.map((step, index) => (
               <li key={step} className="flex gap-3 text-sage-700">
