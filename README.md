@@ -12,19 +12,26 @@ npm run dev
 
 ## GitHub Pages
 
-Сайт публикуется по адресу: **https://victoriiamikhaleva.github.io/Fitodesigner/**
+Сайт: **https://victoriiamikhaleva.github.io/Fitodesigner/**
 
-### Почему раньше не открывалось
+### Почему был белый экран
 
-1. Не был задан `base: '/Fitodesigner/'` в Vite — браузер искал скрипты по `/assets/...` вместо `/Fitodesigner/assets/...`
-2. Не было workflow для сборки и деплоя
+GitHub Pages публиковал **исходники** из ветки `main` (файл `index.html` со ссылкой на `/src/main.tsx`).
+Браузер не может выполнить TypeScript напрямую — нужна **production-сборка** из папки `dist`.
 
-### Как включить Pages
+### Как включить (один раз)
 
-1. Запушьте код в ветку `main` на GitHub
-2. Откройте **Settings → Pages**
-3. В **Build and deployment → Source** выберите **GitHub Actions**
-4. После push в `main` workflow `.github/workflows/deploy.yml` соберёт и опубликует сайт
+1. Откройте репозиторий на GitHub → **Settings** → **Pages**
+2. В **Build and deployment → Source** выберите **Deploy from a branch**
+3. **Branch:** `gh-pages` → папка **`/ (root)`** → **Save**
+4. После push в `main` workflow соберёт проект и обновит ветку `gh-pages`
+
+> Не используйте ветку `main` как источник Pages — там лежит код для разработки, а не готовый сайт.
+
+### Проверка деплоя
+
+- **Actions** → workflow «Deploy to GitHub Pages» должен быть зелёным
+- На ветке `gh-pages` должен появиться `index.html` с путями вида `/Fitodesigner/assets/...`
 
 Локальная production-сборка:
 
