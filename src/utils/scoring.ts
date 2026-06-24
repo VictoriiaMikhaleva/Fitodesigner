@@ -257,7 +257,7 @@ function unique(items: string[]): string[] {
 }
 
 function buildRecommendation(score: number, risks: string[]): string {
-  if (score >= 85) return "Оставить в подборе — хороший выбор для этого брифа.";
+  if (score >= 85) return "Оставить в подборе — хороший выбор для этого задания.";
   if (score >= 65) return "Можно оставить, но проконтролируйте уход и условия.";
   if (risks.length > 0) return "Лучше заменить на более подходящий вариант из каталога.";
   return "Стоит рассмотреть альтернативу с более точным попаданием в условия.";
@@ -340,7 +340,7 @@ export function scoreSelection(
   }
 
   if (strengths.length === 0 && totalScore >= 70) {
-    strengths.push("Подбор сбалансирован и закрывает основные условия брифа.");
+    strengths.push("Подбор сбалансирован и закрывает основные условия задания.");
   }
 
   if (recommendations.length === 0) {

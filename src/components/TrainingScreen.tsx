@@ -70,7 +70,7 @@ export function TrainingScreen({
     setShowConfetti(false);
     setShowAchievementPopup(false);
     setPhase("active");
-    pushToast(`Новая миссия: «${nextBrief.title}»`, "info");
+    pushToast(`Новая практика: «${nextBrief.title}»`, "info");
   };
 
   useEffect(() => {
@@ -142,7 +142,7 @@ export function TrainingScreen({
     return [
       {
         id: "read",
-        label: "Изучите бриф",
+        label: "Изучите задание",
         done: true,
         active: phase === "active" && selectedIds.length === 0,
       },
@@ -172,7 +172,7 @@ export function TrainingScreen({
         <section className="card p-6">
           <h2 className="text-2xl font-semibold text-sage-800">Выберите уровень сложности</h2>
           <p className="mt-2 text-sage-600">
-            За каждый бриф вы получаете XP, серию успехов и достижения. Чем сложнее уровень — тем строже
+            За каждую практику вы получаете XP, серию успехов и достижения. Чем сложнее уровень — тем строже
             оценка.
           </p>
           <div className="mt-5">
@@ -180,7 +180,7 @@ export function TrainingScreen({
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <button type="button" className="btn-primary" onClick={() => startBrief()}>
-              Получить бриф
+              Начать практику
             </button>
             <button type="button" className="btn-secondary" onClick={onBackHome}>
               Вернуться на главный экран
@@ -212,7 +212,7 @@ export function TrainingScreen({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-3">
             <button type="button" className="btn-secondary" onClick={() => startBrief()}>
-              Новый бриф
+              Новая практика
             </button>
             <button type="button" className="btn-secondary" onClick={onBackHome}>
               Вернуться на главный экран
@@ -235,7 +235,7 @@ export function TrainingScreen({
                 className="field-input min-h-28"
                 value={explanation}
                 onChange={(event) => setExplanation(event.target.value)}
-                placeholder="Почему вы выбрали именно эти растения для условий брифа?"
+                placeholder="Почему вы выбрали именно эти растения для условий задания?"
               />
             </label>
             {proExplanationMissing && (

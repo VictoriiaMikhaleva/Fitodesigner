@@ -29,14 +29,14 @@ const STORAGE_KEY = "fitodesigner.progress";
 export const ACHIEVEMENTS: Record<AchievementId, Achievement> = {
   "first-brief": {
     id: "first-brief",
-    title: "Первый бриф",
+    title: "Первая практика",
     description: "Завершите первую тренировку",
     icon: "🌱",
   },
   "pet-guardian": {
     id: "pet-guardian",
     title: "Защитник питомцев",
-    description: "Наберите 80+ баллов в брифе с животными",
+    description: "Наберите 80+ баллов в задании с животными",
     icon: "🐾",
   },
   "shadow-master": {
@@ -54,13 +54,13 @@ export const ACHIEVEMENTS: Record<AchievementId, Achievement> = {
   "hot-streak": {
     id: "hot-streak",
     title: "Горячая серия",
-    description: "3 успешных брифа подряд (70+ баллов)",
+    description: "3 успешные практики подряд (70+ баллов)",
     icon: "🔥",
   },
   "perfect-round": {
     id: "perfect-round",
     title: "Идеальный раунд",
-    description: "100 баллов за один бриф",
+    description: "100 баллов за одну практику",
     icon: "✨",
   },
 };

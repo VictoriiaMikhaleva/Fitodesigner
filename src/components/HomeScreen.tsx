@@ -11,13 +11,13 @@ type HomeScreenProps = {
 
 const FEATURES = [
   "Реальные параметры растений из учебного каталога",
-  "XP, уровни и достижения за каждый бриф",
+  "XP, уровни и достижения за каждую практику",
   "Разбор ошибок и рекомендации после проверки",
   "Три уровня сложности: новичок, практик, профи",
 ];
 
 const STEPS = [
-  "Выберите уровень и получите бриф-квест.",
+  "Выберите уровень и начните практику.",
   "Изучите условия и соберите подбор из каталога.",
   "Проверьте решение и получите XP, серию и достижения.",
   "Разберите ошибки и улучшите следующий раунд.",
@@ -46,7 +46,7 @@ export function HomeScreen({
               Обучающий тренажёр по подбору растений для интерьера
             </p>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-sage-700">
-              Получай брифы, подбирай растения под условия помещения и учись принимать решения как
+              Проходи практики, подбирай растения под условия помещения и учись принимать решения как
               профессиональный фитодизайнер.
             </p>
 
@@ -64,7 +64,7 @@ export function HomeScreen({
             <p className="text-sm font-medium text-sage-600">Игровая статистика</p>
             <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
               <div className="rounded-2xl bg-white/70 p-3">
-                <p className="text-sage-500">Брифов пройдено</p>
+                <p className="text-sage-500">Практик пройдено</p>
                 <p className="text-2xl font-semibold text-sage-800">{progress.roundsPlayed}</p>
               </div>
               <div className="rounded-2xl bg-white/70 p-3">

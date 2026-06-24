@@ -9,7 +9,7 @@ const OPTIONS: { id: Difficulty; title: string; description: string }[] = [
   {
     id: "novice",
     title: "Новичок",
-    description: "Простые брифы, подсказки сразу, мягкая оценка.",
+    description: "Простые задания, подсказки сразу, мягкая оценка.",
   },
   {
     id: "practitioner",
@@ -19,7 +19,7 @@ const OPTIONS: { id: Difficulty; title: string; description: string }[] = [
   {
     id: "pro",
     title: "Профи",
-    description: "Сложные брифы, строгая оценка, нужно объяснить выбор.",
+    description: "Сложные задания, строгая оценка, нужно объяснить выбор.",
   },
 ];
 
