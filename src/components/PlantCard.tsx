@@ -42,9 +42,15 @@ export function PlantCard({
       } ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
     >
       <div className="flex gap-4">
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-sage-100 to-sand-100 text-3xl">
+        <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white">
           {plant.imageUrl ? (
-            <img src={plantImageSrc(plant.imageUrl)} alt={plant.nameRu} className="h-full w-full object-cover" />
+            <img
+              src={plantImageSrc(plant.imageUrl)}
+              alt={plant.nameRu}
+              className="h-full w-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           ) : (
             <span aria-hidden="true">🌿</span>
           )}

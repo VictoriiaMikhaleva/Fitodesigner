@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "convert:plants": "tsx scripts/convertPlantsExcelToJson.ts",
-    "optimize:images": "tsx scripts/optimizeImages.ts"
+    "optimize:images": "tsx scripts/optimizeImages.ts",
+    "rebuild:images": "tsx scripts/optimizeImages.ts -- --rebuild"
   },
   "repository": {
     "type": "git",
