@@ -14,6 +14,12 @@ function petLabel(plant: Plant): string {
   return "Безопасность не указана";
 }
 
+function plantImageSrc(imageUrl: string): string {
+  if (!imageUrl) return "";
+  if (/^https?:\/\//.test(imageUrl)) return imageUrl;
+  return `${import.meta.env.BASE_URL}${imageUrl.replace(/^\//, "")}`;
+}
+
 export function PlantCard({
   plant,
   selected = false,
@@ -38,7 +44,7 @@ export function PlantCard({
       <div className="flex gap-4">
         <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-sage-100 to-sand-100 text-3xl">
           {plant.imageUrl ? (
-            <img src={plant.imageUrl} alt={plant.nameRu} className="h-full w-full object-cover" />
+            <img src={plantImageSrc(plant.imageUrl)} alt={plant.nameRu} className="h-full w-full object-cover" />
           ) : (
             <span aria-hidden="true">🌿</span>
           )}
