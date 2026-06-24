@@ -1119,7 +1119,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Чаще всего встречается сформированным в бонсай, но можно найти и обычную версию. Достаточно неприхотлив и теневынослив.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_microcarpa_066.webp"
   },
   {
     "id": "ficus-elastica-abidjan-067",
@@ -1136,7 +1136,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Сорт с крупными тёмно-бордовыми листьями. В отличие от Робусты, выглядит более драматично. Отлично подходит для интерьеров в стиле лофт и минимализм.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_elastica_abidjan_067.webp"
   },
   {
     "id": "ficus-elastica-068",
@@ -1153,7 +1153,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Классическая форма с крупными блестящими зелёными листьями. Часто встречается в офисах и бизнес-центрах, где нужен неприхотливый крупномер.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_elastica_068.webp"
   },
   {
     "id": "ficus-elastica-melany-069",
@@ -1170,7 +1170,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Более компактный сорт, чем Абиджан или Робуста. Отличается густой кроной, тёмной окраской листьев и склонностью к кустистости.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_elastica_melany_069.webp"
   },
   {
     "id": "philodendron-birkin-070",
@@ -1187,7 +1187,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Сорт с белыми полосами на листьях. Требует яркого рассеянного света для сохранения рисунка.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_birkin_070.webp"
   },
   {
     "id": "philodendron-hederaceum-brazil-071",
@@ -1204,7 +1204,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Лиана с зелёными листьями в форме сердец с жёлтыми полосами по центру. Быстро растёт и подходит для подвесных кашпо и озеленения стен.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_hederaceum_brazil_071.webp"
   },
   {
     "id": "philodendron-panduriforme-072",
@@ -1221,7 +1221,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Необычное растение с листьями, напоминающими форму гитары. В отличие от дольчатого, листья более крупные. Редко встречается в массовом озеленении, чаще в коллекциях.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_panduriforme_072.webp"
   },
   {
     "id": "philodendron-erubescens-green-imperial-073",
@@ -1238,7 +1238,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Кустовой сорт с крупными блестящими листьями. Хорошо смотрится как отдельно, так и в массе других растений, создавая пышность и объем в композиции.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_erubescens_green_imperial_073.webp"
   },
   {
     "id": "philodendron-bipennifolium-074",
@@ -1255,7 +1255,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Лиана с крупными листьями, рассечёнными на глубокие доли. С возрастом листья становятся более изрезанными . В помещении вырастает до 1,5–2 м, в природе — в несколько раз больше. Чтобы ускорить рост, обеспечьте опору с мхом, по которой он будет подниматься. Можно формировать, обрезая длинные плети.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_bipennifolium_074.webp"
   },
   {
     "id": "philodendron-elegans-075",
@@ -1272,7 +1272,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Редкий вид с сильно рассечёнными ажурными листьями. Выглядит утончённо и нежно Требует опоры для роста и высокой влажности. Чаще встречается у коллекционеров.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_elegans_075.webp"
   },
   {
     "id": "philodendron-erubescens-076",
@@ -1289,7 +1289,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Получил название благодаря красным черешкам и стеблям, которые выгодно оттеняют зелёную листву. В природе вырастает до 3–5 м, дома до 1,5-2 м. Лучше всего растёт в теплицах или зимних садах, где влажность выше 60%.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_erubescens_076.webp"
   },
   {
     "id": "philodendron-xanadu-077",
@@ -1306,7 +1306,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Кустовой сорт с рассечёнными листьями. В отличие от Селло, остаётся компактным. Часто используется в массовом озеленении, так как неприхотлив. Подходит для ресторанов и офисов.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_xanadu_077.webp"
   },
   {
     "id": "philodendron-erubescens-red-imperial-078",
