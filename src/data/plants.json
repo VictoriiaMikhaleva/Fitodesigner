@@ -414,7 +414,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Веерная пальма с узкими сегментированными листьями. Пока что еще редко встречается в коммерческом озеленении.",
-    "imageUrl": ""
+    "imageUrl": "plants/rhapis_excelsa_041.webp"
   },
   {
     "id": "rhaphidophora-tetrasperma-042",
@@ -431,7 +431,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Часто сравнивают с монстерой за её листья с прорезями, но это отдельный род. В отличие от монстеры, её листья намного меньше и более изящные. Неприхотлива, при достаточном освещении растет быстро. Требуется опора.",
-    "imageUrl": ""
+    "imageUrl": "plants/rhaphidophora_tetrasperma_042.webp"
   },
   {
     "id": "tradescantia-spathacea-rhoeo-spathacea-043",
@@ -448,7 +448,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Необычные листья длинной формы, с верхней стороны зеленые, с нижней — пурпурные.",
-    "imageUrl": ""
+    "imageUrl": "plants/tradescantia_spathacea_rhoeo_spathacea_043.webp"
   },
   {
     "id": "rhipsalis-baccifera-044",
@@ -465,7 +465,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Эпифитный кактус с тонкими свисающими побегами. Идеально выращивать в подвесных кашпо.",
-    "imageUrl": ""
+    "imageUrl": "plants/rhipsalis_baccifera_044.webp"
   },
   {
     "id": "sansevieria-zeylanica-045",
@@ -482,7 +482,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Одно из самых теневыносливых растений, именно поэтому ее так часто можно встретить в озеленении офисов и торговых центров.",
-    "imageUrl": ""
+    "imageUrl": "plants/sansevieria_zeylanica_045.webp"
   },
   {
     "id": "sansevieria-trifasciata-moonshine-046",
@@ -499,7 +499,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Если обычные сансевиерии кажутся вам скучными, выбирайте муншайн, ее плотные листья мятного цвета выглядят очень необычно и стильно.",
-    "imageUrl": ""
+    "imageUrl": "plants/sansevieria_trifasciata_moonshine_046.webp"
   },
   {
     "id": "sansevieria-trifasciata-047",
@@ -516,7 +516,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Самая распространённая сансевиерия с зелёными листьями и жёлтой каймой. При слабом свете листья могут терять жёлтую кайму.",
-    "imageUrl": ""
+    "imageUrl": "plants/sansevieria_trifasciata_047.webp"
   },
   {
     "id": "sansevieria-trifasciata-hahnii-048",
@@ -533,7 +533,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Компактный сорт с розеточной формой. Отличается миниатюрностью и подходит для столов и маленьких пространств. В отличие от высокорослых сансевиерий, растёт медленно и остаётся низкой.",
-    "imageUrl": ""
+    "imageUrl": "plants/sansevieria_trifasciata_hahnii_048.webp"
   },
   {
     "id": "sansevieria-cylindrica-049",
@@ -550,7 +550,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Имеет цилиндрические листья, растущие пучками, которые садовники часто заплетают в декоративные косы. Для сохранения форму свет нужнен яркий.",
-    "imageUrl": ""
+    "imageUrl": "plants/sansevieria_cylindrica_049.webp"
   },
   {
     "id": "tradescantia-pallida-050",
@@ -567,7 +567,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Ампельное растение с пурпурными листьями и стелющимися побегами. Быстро разрастается, подходит для подвесных кашпо, озеленения балконов и террас.",
-    "imageUrl": ""
+    "imageUrl": "plants/tradescantia_pallida_050.webp"
   },
   {
     "id": "syngonium-podophyllum-051",
