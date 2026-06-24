@@ -7,7 +7,7 @@ const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 
 const PLANTS_DIR = path.join(PROJECT_ROOT, "public", "plants");
 const MAX_SIZE = 600;
 const WEBP_QUALITY = 82;
-const IMAGE_EXTENSIONS = new Set([".webp", ".jpg", ".jpeg", ".png"]);
+const SOURCE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png"]);
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -16,37 +16,31 @@ function formatBytes(bytes: number): string {
 
 async function optimizeImage(filePath: string): Promise<void> {
   const ext = path.extname(filePath).toLowerCase();
-  if (!IMAGE_EXTENSIONS.has(ext)) return;
+  if (!SOURCE_EXTENSIONS.has(ext)) return;
 
   const baseName = path.basename(filePath, ext);
   const outputPath = path.join(PLANTS_DIR, `${baseName}.webp`);
-  const tempPath = `${outputPath}.tmp`;
 
   const inputStats = fs.statSync(filePath);
   const image = sharp(filePath).rotate();
   const metadata = await image.metadata();
 
-  await image
+  const buffer = await image
     .resize(MAX_SIZE, MAX_SIZE, {
       fit: "inside",
       withoutEnlargement: true,
     })
     .webp({ quality: WEBP_QUALITY })
-    .toFile(tempPath);
+    .toBuffer();
 
-  if (fs.existsSync(outputPath)) {
-    fs.unlinkSync(outputPath);
-  }
-
-  fs.renameSync(tempPath, outputPath);
+  fs.writeFileSync(outputPath, buffer);
 
   if (filePath !== outputPath && fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
   }
 
-  const outputStats = fs.statSync(outputPath);
   console.log(
-    `${baseName}.webp: ${formatBytes(inputStats.size)} → ${formatBytes(outputStats.size)} (${metadata.width ?? "?"}×${metadata.height ?? "?"})`,
+    `${baseName}.webp: ${formatBytes(inputStats.size)} → ${formatBytes(buffer.length)} (${metadata.width ?? "?"}×${metadata.height ?? "?"})`,
   );
 }
 
@@ -57,7 +51,8 @@ async function main(): Promise<void> {
 
   const files = fs
     .readdirSync(PLANTS_DIR)
-    .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
+    .filter((file) => !file.endsWith(".tmp"))
+    .filter((file) => SOURCE_EXTENSIONS.has(path.extname(file).toLowerCase()))
     .map((file) => path.join(PLANTS_DIR, file));
 
   if (files.length === 0) {
