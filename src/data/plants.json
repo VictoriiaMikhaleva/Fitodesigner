@@ -788,7 +788,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Отличается пёстрой окраской листьев с белыми или кремовыми краями. В отличие от зелёного сорта, требует больше света для сохранения контраста.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_benjamina_variegata_063.webp"
   },
   {
     "id": "ficus-lyrata-064",
@@ -805,7 +805,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Одно из самых модных растений последних лет. Экземпляры сформированные на штамбе смотрятся особенно стильно.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_lyrata_064.webp"
   },
   {
     "id": "ficus-lyrata-bambino-065",
@@ -822,7 +822,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Компактная форма фикуса лирата.",
-    "imageUrl": ""
+    "imageUrl": "plants/ficus_lyrata_bambino_065.webp"
   },
   {
     "id": "ficus-microcarpa-066",
