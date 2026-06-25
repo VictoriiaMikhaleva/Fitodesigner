@@ -25,7 +25,7 @@ export function Header({ onHome, onCatalog, progress, showHud = false }: HeaderP
             На главную
           </button>
           <button type="button" className="site-nav-link" onClick={onCatalog}>
-            Каталог
+            Каталог тренажёра
           </button>
           <a className="site-nav-link" href={CHOOSE_CATALOG_URL}>
             Подбор растений
