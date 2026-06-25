@@ -1323,7 +1323,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Компактный кустовой сорт с крупными бордовыми листьями. В отличие от других филодендронов, не тянется вверх, а образует плотный куст. В помещении достигает 80–100 см, в природе больше 2 м.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_erubescens_red_imperial_078.webp"
   },
   {
     "id": "philodendron-erubescens-red-emerald-079",
@@ -1340,7 +1340,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Лиана с красноватыми стеблями и зелёными листьями. В отличие от Ред Империала, нуждается в опоре и формирует длинные побеги.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_erubescens_red_emerald_079.webp"
   },
   {
     "id": "thaumatophyllum-bipinnatifidum-philodendron-selloum-080",
@@ -1357,7 +1357,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "В природе вырастает гигантских размеров. Листья крупные, рассечённые.",
-    "imageUrl": ""
+    "imageUrl": "plants/thaumatophyllum_bipinnatifidum_philodendron_selloum_080.webp"
   },
   {
     "id": "philodendron-scandens-hederaceum-081",
@@ -1374,7 +1374,7 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Лиана с сердцевидными зелёными листьями. В отличие от Бразила, без пёстрости, но растёт быстрее. Очень неприхотлив и подходит для озеленения стен и подвесных кашпо.",
-    "imageUrl": ""
+    "imageUrl": "plants/philodendron_scandens_hederaceum_081.webp"
   },
   {
     "id": "phoenix-082",
@@ -1391,7 +1391,7 @@
     "petSafe": true,
     "toxicity": "Нет (но очень колючие шипы на черешках, может быть механическая травма).",
     "comment": "Крупная пальма с жёсткими перистыми листьями. В отличие от финика Робелена, вырастает в настоящего гиганта, поэтому чаще используется в зимних садах и просторных холлах. В интерьерах встречается реже из-за размеров.",
-    "imageUrl": ""
+    "imageUrl": "plants/phoenix_082.webp"
   },
   {
     "id": "chamaedorea-elegans-083",
@@ -1408,7 +1408,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Компактная пальма с ажурными листьями. Продается в основном маленьких размеров, а когда вырастает, сильно вытягивается.",
-    "imageUrl": ""
+    "imageUrl": "plants/chamaedorea_elegans_083.webp"
   },
   {
     "id": "chlorophytum-084",
@@ -1425,7 +1425,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Классика озеленения — вариант с зелёными листьями самый теенвыносливый. Детки вырастают на длинных побегах, которые свисают вниз. Можно использовать для подвесных кашпо и фитостен.",
-    "imageUrl": ""
+    "imageUrl": "plants/chlorophytum_084.webp"
   },
   {
     "id": "chlorophytum-comosum-085",
@@ -1442,7 +1442,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Отличается белыми или кремовыми полосами на листьях. В отличие от зелёной формы, нуждается в большем количестве света для сохранения окраски. Не любит застой воды, так как умеет накапливать ее в своих мощных корнях.",
-    "imageUrl": ""
+    "imageUrl": "plants/chlorophytum_comosum_085.webp"
   },
   {
     "id": "chlorophytum-orchidastrum-green-orange-086",
@@ -1459,7 +1459,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Сорт с ярко-оранжевыми черешками внешне мало похож на классический хлорофитум.",
-    "imageUrl": ""
+    "imageUrl": "plants/chlorophytum_orchidastrum_green_orange_086.webp"
   },
   {
     "id": "howea-forsteriana-087",
@@ -1476,7 +1476,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Самая теневыносливая из всех пальм и самая элегантная. В одном горшке обычно посажено 3-5 растений. Растет не быстро.",
-    "imageUrl": ""
+    "imageUrl": "plants/howea_forsteriana_087.webp"
   },
   {
     "id": "hoya-kerrii-088",
@@ -1493,7 +1493,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Необычная хойя с листьями в форме сердца. В отличие от других видов, часто продается как «однолистник» в горшке. То есть это растение не будет расти и развиваться, так как посажено нечеренком (гд еесть новая точка роста), а одним листом.",
-    "imageUrl": ""
+    "imageUrl": "plants/hoya_kerrii_088.webp"
   },
   {
     "id": "hoya-carnosa-crimson-princess-089",
@@ -1510,7 +1510,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Сорт с пёстрыми листьями — зелёными, белыми и розовыми. Ценится именно за эту окраску.",
-    "imageUrl": ""
+    "imageUrl": "plants/hoya_carnosa_crimson_princess_089.webp"
   },
   {
     "id": "hoya-linearis-090",
@@ -1527,7 +1527,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Очень необычное и редкое растение. Листики похожие на линии (около 7 см в длину), растут вниз один за другим. Плети достигают в длину несколких метров.",
-    "imageUrl": ""
+    "imageUrl": "plants/hoya_linearis_090.webp"
   },
   {
     "id": "hoya-carnosa-091",
@@ -1544,7 +1544,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Классическая хойя с толстыми, блестящими листьями. При достаточном освещении растет быстро, любит тесный горшок. Цветёт обильно ароматными соцветиями.",
-    "imageUrl": ""
+    "imageUrl": "plants/hoya_carnosa_091.webp"
   },
   {
     "id": "hoya-pubicalyx-092",
@@ -1561,7 +1561,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Изящная хойя с узкими листьями и серебристыми пятнами. Цветёт крупными ароматными шарами.",
-    "imageUrl": ""
+    "imageUrl": "plants/hoya_pubicalyx_092.webp"
   },
   {
     "id": "cissus-093",
@@ -1578,7 +1578,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Быстрорастущая лиана, подходит для вертикального озеленения и летних террас.",
-    "imageUrl": ""
+    "imageUrl": "plants/cissus_093.webp"
   },
   {
     "id": "schefflera-arboricola-094",
@@ -1595,7 +1595,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Одно из самых неприхотливых растений для коммерческого озеленения. Стоит не дорого, растет быстро, выдерживает притенение. Можно использовать для озеленения летних террас.",
-    "imageUrl": ""
+    "imageUrl": "plants/schefflera_arboricola_094.webp"
   },
   {
     "id": "schlumbergera-truncata-095",
@@ -1612,7 +1612,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Суккулент с членистыми побегами, цветущий зимой. Для цветения нужно 2 месяца прохлады и засухи.",
-    "imageUrl": ""
+    "imageUrl": "plants/schlumbergera_truncata_095.webp"
   },
   {
     "id": "epipremnum-aureum-096",
@@ -1629,7 +1629,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Быстрорастущая лиана с зелёными листьями и золотистыми пятнами. Идеальна для подвесных композиций и озеленения стен.",
-    "imageUrl": ""
+    "imageUrl": "plants/epipremnum_aureum_096.webp"
   },
   {
     "id": "epipremnum-pinnatum-097",
@@ -1646,7 +1646,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Если будет расти наверх (а не как ампельное растение), и при достаочном освещении листья со временем станут огромного размера с прорезями.",
-    "imageUrl": ""
+    "imageUrl": "plants/epipremnum_pinnatum_097.webp"
   },
   {
     "id": "epiphyllum-anguliger-098",
@@ -1663,7 +1663,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Известен своими зигзагообразными побегами. Популярен в подвесных кашпо. Может зацвести в домашних условиях. но цветение длится всего несколько дней.",
-    "imageUrl": ""
+    "imageUrl": "plants/epiphyllum_anguliger_098.webp"
   },
   {
     "id": "aeschynanthus-radicans-099",
@@ -1680,7 +1680,7 @@
     "petSafe": true,
     "toxicity": "",
     "comment": "Ампельное растение с небольшими ярко-красными цветами. Красиво смотрится в подвесных кашпо.",
-    "imageUrl": ""
+    "imageUrl": "plants/aeschynanthus_radicans_099.webp"
   },
   {
     "id": "yucca-elephantipes-100",
@@ -1697,6 +1697,6 @@
     "petSafe": false,
     "toxicity": "Опасно для питомцев",
     "comment": "Крупномер с жёсткими мечевидными листьями. Выдерживает прямое солнце и засуху. Может достигать 3–4 метров в помещении.",
-    "imageUrl": ""
+    "imageUrl": "plants/yucca_elephantipes_100.webp"
   }
 ]
