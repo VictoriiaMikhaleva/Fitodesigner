@@ -8,6 +8,7 @@ import {
   type RoundUpdate,
 } from "../utils/gameProgress";
 import { scoreSelection } from "../utils/scoring";
+import { DEFAULT_FILTERS } from "../utils/plantFilters";
 import { AchievementPopup } from "./AchievementPopup";
 import { BriefCard } from "./BriefCard";
 import { Confetti } from "./Confetti";
@@ -248,9 +249,14 @@ export function TrainingScreen({
 
         <div className="grid gap-6 xl:grid-cols-[1.4fr_0.8fr]">
           <PlantCatalog
+            key={brief.id}
             plants={plants}
             selectedIds={selectedIds}
             maxPlants={brief.maxPlants}
+            initialFilters={{
+              ...DEFAULT_FILTERS,
+              petSafeOnly: brief.hasPets,
+            }}
             onTogglePlant={togglePlant}
           />
 

@@ -10,6 +10,7 @@ type PlantCatalogProps = {
   maxPlants?: number;
   onTogglePlant: (plant: Plant) => void;
   title?: string;
+  initialFilters?: PlantFilters;
 };
 
 export function PlantCatalog({
@@ -18,8 +19,9 @@ export function PlantCatalog({
   maxPlants,
   onTogglePlant,
   title = "Каталог растений",
+  initialFilters,
 }: PlantCatalogProps) {
-  const [filters, setFilters] = useState<PlantFilters>(DEFAULT_FILTERS);
+  const [filters, setFilters] = useState<PlantFilters>(initialFilters ?? DEFAULT_FILTERS);
   const categories = useMemo(() => getPlantCategories(plants), [plants]);
   const filteredPlants = useMemo(() => filterPlants(plants, filters), [plants, filters]);
 
