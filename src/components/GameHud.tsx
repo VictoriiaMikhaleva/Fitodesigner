@@ -10,7 +10,7 @@ export function GameHud({ progress, compact = false }: GameHudProps) {
 
   return (
     <div className={`flex flex-wrap items-center gap-3 ${compact ? "" : "rounded-2xl border border-sage-200 bg-sage-50/80 p-3"}`}>
-      <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-sm">
+      <div className="flex items-center gap-2 px-1 py-1">
         <span className="text-lg" aria-hidden="true">⭐</span>
         <div>
           <p className="text-xs text-sage-500">Уровень {progress.level}</p>
@@ -33,7 +33,7 @@ export function GameHud({ progress, compact = false }: GameHudProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-sm">
+      <div className="flex items-center gap-2 px-1 py-1">
         <span aria-hidden="true">🔥</span>
         <div>
           <p className="text-xs text-sage-500">Серия</p>
@@ -42,7 +42,7 @@ export function GameHud({ progress, compact = false }: GameHudProps) {
       </div>
 
       {!compact && (
-        <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-sm">
+        <div className="flex items-center gap-2 px-1 py-1">
           <span aria-hidden="true">🏅</span>
           <div>
             <p className="text-xs text-sage-500">Рекорд</p>

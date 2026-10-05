@@ -40,18 +40,18 @@ export function HomeScreen({
       <section className="card overflow-hidden">
         <div className="grid gap-6 p-6 lg:grid-cols-[1.3fr_0.7fr] lg:p-8">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sage-500">Fitodesigner</p>
-            <h2 className="mt-2 text-4xl font-semibold leading-tight text-sage-800 sm:text-5xl">Фитодизайнер</h2>
-            <p className="mt-3 text-lg text-sage-600">
-              Обучающий тренажёр по подбору растений для интерьера
-            </p>
+            <p className="text-sm font-medium tracking-wide text-sage-500">Комнатные растения</p>
+            <h2 className="mt-2 text-4xl font-medium leading-tight text-sage-800 sm:text-5xl">
+              Тренажёр насмотренности
+            </h2>
+            <p className="mt-3 text-lg text-sage-600">Комнатные растения</p>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-sage-700">
               Проходи практики, подбирай растения под условия помещения и учись принимать решения как
               профессиональный фитодизайнер.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <button type="button" className="btn-primary animate-pulse-soft" onClick={onStartTraining}>
+              <button type="button" className="btn-primary" onClick={onStartTraining}>
                 Начать тренировку
               </button>
               <button type="button" className="btn-secondary" onClick={onOpenCatalog}>
@@ -60,24 +60,24 @@ export function HomeScreen({
             </div>
           </div>
 
-          <div className="rounded-3xl bg-gradient-to-br from-sage-100 via-sand-100 to-sage-200 p-6">
-            <p className="text-sm font-medium text-sage-600">Игровая статистика</p>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-              <div className="rounded-2xl bg-white/70 p-3">
-                <p className="text-sage-500">Практик пройдено</p>
-                <p className="text-2xl font-semibold text-sage-800">{progress.roundsPlayed}</p>
+          <div className="rounded-[22px] bg-sage-100 p-6">
+            <p className="text-sm text-sage-500">Игровая статистика</p>
+            <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5">
+              <div>
+                <p className="text-3xl font-medium leading-none text-sage-800">{progress.roundsPlayed}</p>
+                <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">Практик пройдено</p>
               </div>
-              <div className="rounded-2xl bg-white/70 p-3">
-                <p className="text-sage-500">Каталог</p>
-                <p className="text-2xl font-semibold text-sage-800">{plantsCount}</p>
+              <div>
+                <p className="text-3xl font-medium leading-none text-sage-800">{plantsCount}</p>
+                <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">В каталоге</p>
               </div>
-              <div className="rounded-2xl bg-white/70 p-3">
-                <p className="text-sage-500">Серия</p>
-                <p className="text-2xl font-semibold text-sage-800">{progress.streak} 🔥</p>
+              <div>
+                <p className="text-3xl font-medium leading-none text-sage-800">{progress.streak}</p>
+                <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">Серия</p>
               </div>
-              <div className="rounded-2xl bg-white/70 p-3">
-                <p className="text-sage-500">Достижения</p>
-                <p className="text-2xl font-semibold text-sage-800">{unlocked.length}</p>
+              <div>
+                <p className="text-3xl font-medium leading-none text-sage-800">{unlocked.length}</p>
+                <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">Достижения</p>
               </div>
             </div>
           </div>

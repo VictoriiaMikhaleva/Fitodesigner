@@ -13,27 +13,33 @@ const CHOOSE_CATALOG_URL =
 
 export function Header({ onHome, onCatalog, progress, showHud = false }: HeaderProps) {
   return (
-    <header className="space-y-3">
-      <div className="card flex flex-col gap-3 px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="button" onClick={onHome} className="text-left">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-500">Fitodesigner</p>
-          <p className="text-lg font-semibold text-sage-800">Фитодизайнер</p>
-        </button>
+    <header>
+      <div className="bg-[#163C2D] text-[#FBF9F3]">
+        <div className="mx-auto flex min-h-[69px] max-w-[1540px] flex-col justify-center gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+          <button type="button" onClick={onHome} className="text-left">
+            <p className="text-[0.78rem] tracking-wide text-white/65">Подбор растений</p>
+            <p className="text-[1.15rem] font-medium leading-tight">Тренажёр насмотренности</p>
+          </button>
 
-        <nav className="flex flex-wrap items-center gap-5 sm:gap-6" aria-label="Навигация">
-          <button type="button" className="site-nav-link" onClick={onHome}>
-            На главную
-          </button>
-          <button type="button" className="site-nav-link" onClick={onCatalog}>
-            Каталог тренажёра
-          </button>
-          <a className="site-nav-link" href={CHOOSE_CATALOG_URL}>
-            Подбор растений
-          </a>
-        </nav>
+          <nav className="flex flex-wrap items-center gap-5 sm:gap-6" aria-label="Навигация">
+            <button type="button" className="site-nav-link" onClick={onHome}>
+              На главную
+            </button>
+            <button type="button" className="site-nav-link" onClick={onCatalog}>
+              Каталог тренажёра
+            </button>
+            <a className="site-nav-link" href={CHOOSE_CATALOG_URL}>
+              Подбор растений
+            </a>
+          </nav>
+        </div>
       </div>
 
-      {showHud && progress && <GameHud progress={progress} compact />}
+      {showHud && progress && (
+        <div className="mx-auto max-w-[1540px] px-4 pt-5 sm:px-7">
+          <GameHud progress={progress} compact />
+        </div>
+      )}
     </header>
   );
 }
