@@ -61,7 +61,7 @@ export function HomeScreen({
           </div>
 
           <div className="rounded-[22px] bg-sage-100 p-6">
-            <p className="text-sm text-sage-500">Игровая статистика</p>
+            <p className="text-sm text-sage-500">Статистика практики</p>
             <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5">
               <div>
                 <p className="text-3xl font-medium leading-none text-sage-800">{progress.roundsPlayed}</p>
