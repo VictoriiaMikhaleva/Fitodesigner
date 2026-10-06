@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ContactFooter } from "./components/ContactFooter";
 import { Header } from "./components/Header";
 import { HomeScreen } from "./components/HomeScreen";
 import { PlantCatalog } from "./components/PlantCatalog";
@@ -15,6 +16,7 @@ export function App() {
 
   if (!plantsAvailable) {
     return (
+      <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen max-w-3xl items-center px-4 py-10">
         <section className="card w-full p-8 text-center">
           <h1 className="text-3xl font-medium text-sage-800">Тренажёр насмотренности</h1>
@@ -27,6 +29,8 @@ export function App() {
             Ожидаемый файл: <strong>Каталог 100 растений для озеленения.xlsx</strong>
           </p>
         </section>
+      </div>
+      <ContactFooter />
       </div>
     );
   }
@@ -73,6 +77,7 @@ export function App() {
           />
         )}
       </div>
+      <ContactFooter />
     </div>
   );
 }
