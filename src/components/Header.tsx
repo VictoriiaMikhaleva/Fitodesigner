@@ -1,4 +1,5 @@
 import type { GameProgress } from "../utils/gameProgress";
+import { PLANT_ROUTES } from "../config/routes";
 import { GameHud } from "./GameHud";
 
 type HeaderProps = {
@@ -8,29 +9,37 @@ type HeaderProps = {
   showHud?: boolean;
 };
 
-const CHOOSE_CATALOG_URL =
-  "https://victoriiamikhaleva.github.io/Choose_your_plant/plant_selector_catalog_v6_photos_lux_fixed.html";
+const cloverSrc = `${import.meta.env.BASE_URL}brand/clover-four-leaf.png`;
 
 export function Header({ onHome, onCatalog, progress, showHud = false }: HeaderProps) {
   return (
     <header>
       <div className="bg-[#163C2D] text-[#FBF9F3]">
-        <div className="mx-auto flex min-h-[69px] max-w-[1540px] flex-col justify-center gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7">
-          <button type="button" onClick={onHome} className="text-left">
-            <p className="text-[0.78rem] tracking-wide text-white/65">Подбор растений</p>
-            <p className="text-[1.15rem] font-medium leading-tight">Тренажёр насмотренности</p>
+        <div className="mx-auto flex max-w-[1540px] flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+          <button type="button" onClick={onHome} className="flex min-w-0 items-center gap-2.5 text-left">
+            <img className="brand-mark" src={cloverSrc} alt="" width={784} height={944} />
+            <span className="min-w-0">
+              <p className="truncate text-[0.78rem] tracking-wide text-white/65">Подбор растений</p>
+              <p className="truncate text-[1.15rem] font-medium leading-tight">Тренажёр насмотренности</p>
+            </span>
           </button>
 
-          <nav className="flex flex-wrap items-center gap-5 sm:gap-6" aria-label="Навигация">
-            <button type="button" className="site-nav-link" onClick={onHome}>
+          <nav className="product-nav" aria-label="Разделы продукта">
+            <a className="site-nav-link" href={PLANT_ROUTES.home}>
               На главную
-            </button>
+            </a>
+            <a className="site-nav-link" href={PLANT_ROUTES.indoor}>
+              Комнатные растения
+            </a>
+            <a className="site-nav-link" href={PLANT_ROUTES.garden}>
+              Садовые растения
+            </a>
+            <a className="site-nav-link site-nav-link--current" href={PLANT_ROUTES.trainer} aria-current="page">
+              Тренажёр
+            </a>
             <button type="button" className="site-nav-link" onClick={onCatalog}>
               Каталог тренажёра
             </button>
-            <a className="site-nav-link" href={CHOOSE_CATALOG_URL}>
-              Подбор растений
-            </a>
           </nav>
         </div>
       </div>
