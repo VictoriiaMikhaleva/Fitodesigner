@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { AchievementPopup } from "./components/AchievementPopup";
 import { ContactFooter } from "./components/ContactFooter";
 import { Header } from "./components/Header";
 import { HomeScreen } from "./components/HomeScreen";
@@ -6,12 +7,21 @@ import { PlantCatalog } from "./components/PlantCatalog";
 import { TrainingScreen } from "./components/TrainingScreen";
 import { hasPlantsData, plants } from "./data/plantsLoader";
 import type { AppScreen } from "./types";
-import { loadProgress, type GameProgress } from "./utils/gameProgress";
+import { getLevelTitle, loadProgress, type GameProgress } from "./utils/gameProgress";
+
+function readPreviewLevelReward(): number | null {
+  if (!import.meta.env.DEV) return null;
+  const raw = new URLSearchParams(window.location.search).get("previewLevelReward");
+  if (!raw) return null;
+  const level = Number(raw);
+  return Number.isFinite(level) && level >= 1 ? Math.floor(level) : null;
+}
 
 export function App() {
   const [screen, setScreen] = useState<AppScreen>("home");
   const [catalogSelection, setCatalogSelection] = useState<string[]>([]);
   const [progress, setProgress] = useState<GameProgress>(() => loadProgress());
+  const [previewLevelReward, setPreviewLevelReward] = useState<number | null>(() => readPreviewLevelReward());
   const plantsAvailable = useMemo(() => hasPlantsData(), []);
 
   if (!plantsAvailable) {
@@ -78,6 +88,17 @@ export function App() {
         )}
       </div>
       <ContactFooter />
+
+      {previewLevelReward !== null && (
+        <AchievementPopup
+          achievements={[]}
+          xpGained={12}
+          leveledUp
+          level={previewLevelReward}
+          levelTitle={getLevelTitle(previewLevelReward)}
+          onClose={() => setPreviewLevelReward(null)}
+        />
+      )}
     </div>
   );
 }

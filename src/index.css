@@ -62,6 +62,41 @@
     flex: 0 0 auto;
   }
 
+  .level-clovers {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem 0.7rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .level-clovers__item {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .level-clovers__mark {
+    display: block;
+    height: 28px;
+    width: auto;
+    max-width: 36px;
+    object-fit: contain;
+    object-position: center;
+    filter: none;
+  }
+
+  @media (min-width: 640px) {
+    .level-clovers__mark {
+      height: 32px;
+      max-width: 40px;
+    }
+  }
+
   .product-nav {
     display: flex;
     flex-wrap: nowrap;

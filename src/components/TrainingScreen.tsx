@@ -11,7 +11,6 @@ import { scoreSelection } from "../utils/scoring";
 import { DEFAULT_FILTERS } from "../utils/plantFilters";
 import { AchievementPopup } from "./AchievementPopup";
 import { BriefCard } from "./BriefCard";
-import { Confetti } from "./Confetti";
 import { DesignerTip } from "./DesignerTip";
 import { DifficultySelector } from "./DifficultySelector";
 import { GameToast, type ToastMessage } from "./GameToast";
@@ -45,7 +44,6 @@ export function TrainingScreen({
   const [roundUpdate, setRoundUpdate] = useState<RoundUpdate | null>(null);
   const [explanation, setExplanation] = useState("");
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
-  const [showConfetti, setShowConfetti] = useState(false);
   const [showAchievementPopup, setShowAchievementPopup] = useState(false);
   const [elapsedSec, setElapsedSec] = useState(0);
 
@@ -68,7 +66,6 @@ export function TrainingScreen({
     setRoundUpdate(null);
     setExplanation("");
     setElapsedSec(0);
-    setShowConfetti(false);
     setShowAchievementPopup(false);
     setPhase("active");
     pushToast(`Новая практика: «${nextBrief.title}»`, "info");
@@ -83,12 +80,6 @@ export function TrainingScreen({
 
     return () => window.clearInterval(timer);
   }, [phase, brief]);
-
-  useEffect(() => {
-    if (!showConfetti) return;
-    const timer = window.setTimeout(() => setShowConfetti(false), 3200);
-    return () => window.clearTimeout(timer);
-  }, [showConfetti]);
 
   const togglePlant = (plant: Plant) => {
     if (!brief) return;
@@ -125,10 +116,6 @@ export function TrainingScreen({
     onProgressChange(update.progress);
     setPhase("result");
     setShowAchievementPopup(true);
-
-    if (nextResult.totalScore >= 90) {
-      setShowConfetti(true);
-    }
 
     if (nextResult.totalScore >= 70) {
       pushToast(`Отлично! +${update.xpGained} XP`, "success");
@@ -197,13 +184,13 @@ export function TrainingScreen({
   return (
     <>
       <GameToast toasts={toasts} onDismiss={dismissToast} />
-      {showConfetti && <Confetti />}
 
       {showAchievementPopup && roundUpdate && (
         <AchievementPopup
           achievements={roundUpdate.newAchievements}
           xpGained={roundUpdate.xpGained}
           leveledUp={roundUpdate.leveledUp}
+          level={roundUpdate.progress.level}
           levelTitle={getLevelTitle(roundUpdate.progress.level)}
           onClose={() => setShowAchievementPopup(false)}
         />
