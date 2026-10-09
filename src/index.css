@@ -124,6 +124,42 @@
   .field-input {
     @apply w-full rounded-xl border border-sage-200 bg-white px-3 py-2.5 text-sage-800 outline-none transition focus:border-sage-400 focus:ring-2 focus:ring-sage-200;
   }
+
+  .catalog-switch {
+    display: flex;
+    width: min(100%, 22rem);
+    padding: 3px;
+    border: 1px solid rgba(20, 46, 36, 0.15);
+    border-radius: 999px;
+    background: #fff;
+  }
+
+  .catalog-switch button {
+    flex: 1 1 0;
+    min-height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #163c2d;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .catalog-switch button.is-active {
+    background: #1e4434;
+    color: #fbf9f3;
+  }
+
+  .catalog-switch button:hover:not(.is-active) {
+    background: #ebf0e7;
+  }
+
+  .catalog-switch button:focus-visible {
+    outline: 2px solid #1e4434;
+    outline-offset: 2px;
+  }
 }
 
 @keyframes toast-in {

@@ -1,13 +1,79 @@
 import { DEFAULT_FILTERS } from "../utils/plantFilters";
-import type { PlantFilters } from "../types";
+import type { CatalogMode, PlantFilters } from "../types";
 
 type FilterPanelProps = {
   filters: PlantFilters;
   categories: string[];
   onChange: (filters: PlantFilters) => void;
+  catalog?: CatalogMode;
 };
 
-export function FilterPanel({ filters, categories, onChange }: FilterPanelProps) {
+export function FilterPanel({ filters, categories, onChange, catalog = "indoor" }: FilterPanelProps) {
+  if (catalog === "garden") {
+    return (
+      <div className="card p-4">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h3 className="font-semibold text-sage-800">Фильтры каталога</h3>
+          <button
+            type="button"
+            className="text-sm font-medium text-sage-600 hover:text-sage-800"
+            onClick={() => onChange(DEFAULT_FILTERS)}
+          >
+            Сбросить
+          </button>
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <label className="md:col-span-2 xl:col-span-1">
+            <span className="field-label">Поиск по названию</span>
+            <input
+              className="field-input"
+              type="search"
+              value={filters.query}
+              placeholder="Название или окраска…"
+              onChange={(event) => onChange({ ...filters, query: event.target.value })}
+            />
+          </label>
+
+          <label>
+            <span className="field-label">Окраска</span>
+            <select
+              className="field-input"
+              value={filters.category}
+              onChange={(event) => onChange({ ...filters, category: event.target.value })}
+            >
+              <option value="all">Все</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            <span className="field-label">Солнце</span>
+            <select
+              className="field-input"
+              value={filters.gardenSun ?? "all"}
+              onChange={(event) =>
+                onChange({
+                  ...filters,
+                  gardenSun: event.target.value as PlantFilters["gardenSun"],
+                })
+              }
+            >
+              <option value="all">Все</option>
+              <option value="shade">Тень</option>
+              <option value="part">Полутень</option>
+              <option value="sun">Солнце</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="card p-4">
       <div className="mb-4 flex items-center justify-between gap-3">

@@ -11,7 +11,27 @@ const GENERAL_TIPS = [
   "Для кафе и общественных пространств лучше выбирать устойчивые растения с понятным уходом.",
 ];
 
+function gardenTips(brief: Brief): string[] {
+  const tips = [
+    "Одна культура может встречаться несколькими карточками. Смотрите фотографию и окраску именно этой карточки.",
+  ];
+
+  if (brief.garden?.colors?.length) {
+    tips.push("Для зачёта окраски нужна карточка с цветом из задания, а не другое фото той же культуры.");
+  }
+
+  if (brief.garden && brief.garden.sun[1] <= 3) {
+    tips.push("Для тени и полутени берите растения, чей диапазон солнца пересекается с 1–3.");
+  } else if (brief.garden && brief.garden.sun[0] >= 4) {
+    tips.push("Для солнечного места подходят растения, чей диапазон солнца доходит до 4–5.");
+  }
+
+  return tips;
+}
+
 function tipsForBrief(brief: Brief): string[] {
+  if (brief.garden) return gardenTips(brief);
+
   const tips: string[] = [];
   const text = `${brief.title} ${brief.description} ${brief.light}`.toLowerCase();
 
@@ -59,10 +79,14 @@ function tipsForResult(result: ScoreResult): string[] {
 export function DesignerTip({ brief, result, showHints = true }: DesignerTipProps) {
   if (!showHints) return null;
 
+  const generalTips = brief?.garden
+    ? ["Фотография карточки принадлежит её id и окраске. Другой цвет той же культуры — другая карточка."]
+    : GENERAL_TIPS;
+
   const tips = [
     ...(brief ? tipsForBrief(brief) : []),
     ...(result ? tipsForResult(result) : []),
-    ...GENERAL_TIPS,
+    ...generalTips,
   ].slice(0, 3);
 
   if (tips.length === 0) return null;

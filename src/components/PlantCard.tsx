@@ -16,7 +16,7 @@ function petLabel(plant: Plant): string {
 
 function plantImageSrc(imageUrl: string): string {
   if (!imageUrl) return "";
-  if (/^https?:\/\//.test(imageUrl)) return imageUrl;
+  if (/^https?:\/\//.test(imageUrl) || imageUrl.startsWith("/")) return imageUrl;
   return `${import.meta.env.BASE_URL}${imageUrl.replace(/^\//, "")}`;
 }
 
@@ -46,7 +46,7 @@ export function PlantCard({
           {plant.imageUrl ? (
             <img
               src={plantImageSrc(plant.imageUrl)}
-              alt={plant.nameRu}
+              alt={plant.garden ? `${plant.nameRu}, ${plant.garden.colorLabel}` : plant.nameRu}
               className="h-full w-full object-contain"
               loading="lazy"
               decoding="async"
@@ -60,7 +60,9 @@ export function PlantCard({
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div>
               <h3 className="font-semibold text-sage-800">{plant.nameRu}</h3>
-              <p className="text-sm italic text-sage-500">{plant.nameLat}</p>
+              <p className={plant.garden ? "text-sm text-sage-500" : "text-sm italic text-sage-500"}>
+                {plant.garden ? plant.garden.colorLabel : plant.nameLat}
+              </p>
             </div>
             {selected && (
               <span className="rounded-full bg-sage-600 px-2.5 py-1 text-xs font-medium text-white">
@@ -69,9 +71,34 @@ export function PlantCard({
             )}
           </div>
 
-          <p className="mt-2 text-sm text-sage-600">{plant.category || "Категория не указана"}</p>
+          <p className="mt-2 text-sm text-sage-600">
+            {plant.garden
+              ? plant.garden.gardenCycle || plant.garden.lifeCycle || "Садовое растение"
+              : plant.category || "Категория не указана"}
+          </p>
 
-          {showDetails && (
+          {showDetails && plant.garden && (
+            <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+              <div>
+                <dt className="text-xs uppercase tracking-wide text-sage-500">Солнце</dt>
+                <dd className="text-sage-700">{plant.garden.sunLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase tracking-wide text-sage-500">Высота</dt>
+                <dd className="text-sage-700">{plant.garden.height} см</dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase tracking-wide text-sage-500">Цветение</dt>
+                <dd className="text-sage-700">{plant.garden.bloomNote}</dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase tracking-wide text-sage-500">Зимовка</dt>
+                <dd className="text-sage-700">{plant.garden.russiaWintering}</dd>
+              </div>
+            </dl>
+          )}
+
+          {showDetails && !plant.garden && (
             <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
               <div>
                 <dt className="text-xs uppercase tracking-wide text-sage-500">Свет</dt>

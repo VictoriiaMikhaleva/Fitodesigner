@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
-import type { Plant, PlantFilters } from "../types";
+import type { CatalogMode, Plant, PlantFilters } from "../types";
+import { filterGardenPlants } from "../utils/gardenFilters";
+import { orderGardenPlants } from "../utils/gardenOrder";
 import { DEFAULT_FILTERS, filterPlants, getPlantCategories } from "../utils/plantFilters";
 import { FilterPanel } from "./FilterPanel";
 import { PlantCard } from "./PlantCard";
@@ -11,6 +13,8 @@ type PlantCatalogProps = {
   onTogglePlant: (plant: Plant) => void;
   title?: string;
   initialFilters?: PlantFilters;
+  catalog?: CatalogMode;
+  orderSeed?: number;
 };
 
 export function PlantCatalog({
@@ -20,10 +24,15 @@ export function PlantCatalog({
   onTogglePlant,
   title = "Каталог растений",
   initialFilters,
+  catalog = "indoor",
+  orderSeed = 0,
 }: PlantCatalogProps) {
   const [filters, setFilters] = useState<PlantFilters>(initialFilters ?? DEFAULT_FILTERS);
   const categories = useMemo(() => getPlantCategories(plants), [plants]);
-  const filteredPlants = useMemo(() => filterPlants(plants, filters), [plants, filters]);
+  const filteredPlants = useMemo(() => {
+    const filtered = catalog === "garden" ? filterGardenPlants(plants, filters) : filterPlants(plants, filters);
+    return catalog === "garden" ? orderGardenPlants(filtered, orderSeed) : filtered;
+  }, [catalog, filters, orderSeed, plants]);
 
   return (
     <section className="space-y-4">
@@ -36,7 +45,7 @@ export function PlantCatalog({
         </div>
       </div>
 
-      <FilterPanel filters={filters} categories={categories} onChange={setFilters} />
+      <FilterPanel filters={filters} categories={categories} onChange={setFilters} catalog={catalog} />
 
       {filteredPlants.length === 0 ? (
         <div className="card p-8 text-center text-sage-600">

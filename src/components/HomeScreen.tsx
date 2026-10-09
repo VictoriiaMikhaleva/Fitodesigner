@@ -1,8 +1,10 @@
+import type { CatalogMode } from "../types";
 import { ACHIEVEMENTS } from "../utils/gameProgress";
 import type { GameProgress } from "../utils/gameProgress";
 import { GameHud } from "./GameHud";
 
 type HomeScreenProps = {
+  catalog: CatalogMode;
   plantsCount: number;
   progress: GameProgress;
   onStartTraining: () => void;
@@ -24,11 +26,24 @@ const STEPS = [
 ];
 
 export function HomeScreen({
+  catalog,
   plantsCount,
   progress,
   onStartTraining,
   onOpenCatalog,
 }: HomeScreenProps) {
+  const catalogLabel = catalog === "garden" ? "Садовые растения" : "Комнатные растения";
+  const lead =
+    catalog === "garden"
+      ? "Проходи практики, подбирай садовые растения под условия цветника и учись узнавать одну культуру в разных окрасках."
+      : "Проходи практики, подбирай растения под условия помещения и учись принимать решения как профессиональный фитодизайнер.";
+  const features =
+    catalog === "garden"
+      ? [
+          "Все карточки садового каталога, включая разные окраски одной культуры",
+          ...FEATURES.slice(1),
+        ]
+      : FEATURES;
   const unlocked = progress.achievements
     .map((id) => ACHIEVEMENTS[id])
     .filter(Boolean);
@@ -40,15 +55,12 @@ export function HomeScreen({
       <section className="card overflow-hidden">
         <div className="grid gap-6 p-6 lg:grid-cols-[1.3fr_0.7fr] lg:p-8">
           <div>
-            <p className="text-sm font-medium tracking-wide text-sage-500">Комнатные растения</p>
+            <p className="text-sm font-medium tracking-wide text-sage-500">{catalogLabel}</p>
             <h2 className="mt-2 text-4xl font-medium leading-tight text-sage-800 sm:text-5xl">
               Тренажёр насмотренности
             </h2>
-            <p className="mt-3 text-lg text-sage-600">Комнатные растения</p>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-sage-700">
-              Проходи практики, подбирай растения под условия помещения и учись принимать решения как
-              профессиональный фитодизайнер.
-            </p>
+            <p className="mt-3 text-lg text-sage-600">{catalogLabel}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-sage-700">{lead}</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <button type="button" className="btn-primary" onClick={onStartTraining}>
@@ -120,7 +132,7 @@ export function HomeScreen({
         <article className="card p-6">
           <h3 className="text-xl font-semibold text-sage-800">Почему это полезно</h3>
           <ul className="mt-4 space-y-3">
-            {FEATURES.map((feature) => (
+            {features.map((feature) => (
               <li key={feature} className="flex gap-3 text-sage-700">
                 <span className="text-sage-500">✓</span>
                 <span>{feature}</span>

@@ -1,4 +1,4 @@
-import type { Difficulty, ScoreResult } from "../types";
+import type { CatalogMode, Difficulty, ScoreResult } from "../types";
 
 export type AchievementId =
   | "first-brief"
@@ -25,6 +25,11 @@ export type GameProgress = {
 };
 
 const STORAGE_KEY = "fitodesigner.progress";
+const GARDEN_STORAGE_KEY = "fitodesigner.progress.garden";
+
+function storageKey(catalog: CatalogMode): string {
+  return catalog === "garden" ? GARDEN_STORAGE_KEY : STORAGE_KEY;
+}
 
 export const ACHIEVEMENTS: Record<AchievementId, Achievement> = {
   "first-brief": {
@@ -84,9 +89,9 @@ export function getDefaultProgress(): GameProgress {
   };
 }
 
-export function loadProgress(): GameProgress {
+export function loadProgress(catalog: CatalogMode = "indoor"): GameProgress {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(storageKey(catalog));
     if (!raw) return getDefaultProgress();
     return { ...getDefaultProgress(), ...JSON.parse(raw) };
   } catch {
@@ -94,8 +99,8 @@ export function loadProgress(): GameProgress {
   }
 }
 
-export function saveProgress(progress: GameProgress): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+export function saveProgress(progress: GameProgress, catalog: CatalogMode = "indoor"): void {
+  localStorage.setItem(storageKey(catalog), JSON.stringify(progress));
 }
 
 export function xpForLevel(level: number): number {
@@ -182,6 +187,7 @@ export function applyRoundResult(
   progress: GameProgress,
   result: ScoreResult,
   meta: RoundMeta,
+  catalog: CatalogMode = "indoor",
 ): RoundUpdate {
   const streak = result.totalScore >= 70 ? progress.streak + 1 : 0;
   const baseXp = Math.round(result.totalScore / 10);
@@ -205,7 +211,7 @@ export function applyRoundResult(
   const previousLevel = progress.level;
   draft.level = levelFromXp(draft.xp);
 
-  saveProgress(draft);
+  saveProgress(draft, catalog);
 
   return {
     progress: draft,

@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { pickRandomBrief } from "../data/briefs";
-import type { Brief, Difficulty, Plant, ScoreResult, TrainingPhase } from "../types";
+import { pickGardenBrief } from "../data/gardenBriefs";
+import type { Brief, CatalogMode, Difficulty, Plant, ScoreResult, TrainingPhase } from "../types";
 import {
   applyRoundResult,
   getLevelTitle,
   type GameProgress,
   type RoundUpdate,
 } from "../utils/gameProgress";
+import { gardenSelectionBlocked } from "../utils/gardenOrder";
+import { scoreGardenSelection } from "../utils/gardenScoring";
 import { scoreSelection } from "../utils/scoring";
 import { DEFAULT_FILTERS } from "../utils/plantFilters";
 import { AchievementPopup } from "./AchievementPopup";
@@ -20,6 +23,7 @@ import { ScoreResult as ScoreResultView } from "./ScoreResult";
 import { SelectedPlantsPanel } from "./SelectedPlantsPanel";
 
 type TrainingScreenProps = {
+  catalog: CatalogMode;
   plants: Plant[];
   progress: GameProgress;
   onProgressChange: (progress: GameProgress) => void;
@@ -31,6 +35,7 @@ function createToast(text: string, tone: ToastMessage["tone"] = "info"): ToastMe
 }
 
 export function TrainingScreen({
+  catalog,
   plants,
   progress,
   onProgressChange,
@@ -46,6 +51,7 @@ export function TrainingScreen({
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [showAchievementPopup, setShowAchievementPopup] = useState(false);
   const [elapsedSec, setElapsedSec] = useState(0);
+  const [roundIndex, setRoundIndex] = useState(0);
 
   const showHints = difficulty === "novice" || (difficulty === "practitioner" && phase === "result");
 
@@ -58,7 +64,11 @@ export function TrainingScreen({
   }, []);
 
   const startBrief = (nextDifficulty = difficulty) => {
-    const nextBrief = pickRandomBrief(nextDifficulty, brief?.id);
+    const nextBrief =
+      catalog === "garden"
+        ? pickGardenBrief(nextDifficulty, brief?.id)
+        : pickRandomBrief(nextDifficulty, brief?.id);
+    setRoundIndex((value) => value + 1);
     setDifficulty(nextDifficulty);
     setBrief(nextBrief);
     setSelectedIds([]);
@@ -90,6 +100,14 @@ export function TrainingScreen({
         return current.filter((id) => id !== plant.id);
       }
 
+      if (catalog === "garden") {
+        const blocked = gardenSelectionBlocked(plants, current, plant);
+        if (blocked) {
+          pushToast(blocked, "warning");
+          return current;
+        }
+      }
+
       if (current.length >= brief.maxPlants) {
         pushToast(`Лимит ${brief.maxPlants} растений — удалите одно, чтобы добавить новое`, "warning");
         return current;
@@ -104,12 +122,20 @@ export function TrainingScreen({
   const handleCheck = () => {
     if (!brief) return;
 
-    const nextResult = scoreSelection(brief, plants, selectedIds, difficulty);
-    const update = applyRoundResult(progress, nextResult, {
-      briefId: brief.id,
-      difficulty,
-      hasPets: brief.hasPets,
-    });
+    const nextResult =
+      catalog === "garden"
+        ? scoreGardenSelection(brief, plants, selectedIds, difficulty)
+        : scoreSelection(brief, plants, selectedIds, difficulty);
+    const update = applyRoundResult(
+      progress,
+      nextResult,
+      {
+        briefId: brief.id,
+        difficulty,
+        hasPets: brief.hasPets,
+      },
+      catalog,
+    );
 
     setResult(nextResult);
     setRoundUpdate(update);
@@ -163,6 +189,12 @@ export function TrainingScreen({
             За каждую практику вы получаете XP, серию успехов и достижения. Чем сложнее уровень — тем строже
             оценка.
           </p>
+          {catalog === "garden" && (
+            <p className="mt-2 text-sage-600">
+              В садовом режиме {plants.length} карточек. У одной культуры бывает несколько окрасок, и в одном
+              раунде выбирается одна.
+            </p>
+          )}
           <div className="mt-5">
             <DifficultySelector value={difficulty} onChange={setDifficulty} />
           </div>
@@ -237,12 +269,15 @@ export function TrainingScreen({
         <div className="grid gap-6 xl:grid-cols-[1.4fr_0.8fr]">
           <PlantCatalog
             key={brief.id}
+            catalog={catalog}
+            orderSeed={roundIndex}
+            title={catalog === "garden" ? "Каталог садовых растений" : "Каталог растений"}
             plants={plants}
             selectedIds={selectedIds}
             maxPlants={brief.maxPlants}
             initialFilters={{
               ...DEFAULT_FILTERS,
-              petSafeOnly: brief.hasPets,
+              petSafeOnly: catalog === "garden" ? false : brief.hasPets,
             }}
             onTogglePlant={togglePlant}
           />

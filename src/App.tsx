@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
 import { AchievementPopup } from "./components/AchievementPopup";
+import { CatalogModeSwitch } from "./components/CatalogModeSwitch";
 import { ContactFooter } from "./components/ContactFooter";
 import { Header } from "./components/Header";
 import { HomeScreen } from "./components/HomeScreen";
 import { PlantCatalog } from "./components/PlantCatalog";
 import { TrainingScreen } from "./components/TrainingScreen";
-import { hasPlantsData, plants } from "./data/plantsLoader";
-import type { AppScreen } from "./types";
+import { plantsForCatalog } from "./data/catalogs";
+import { hasPlantsData } from "./data/plantsLoader";
+import type { AppScreen, CatalogMode } from "./types";
 import { getLevelTitle, loadProgress, type GameProgress } from "./utils/gameProgress";
 
 function readPreviewLevelReward(): number | null {
@@ -19,10 +21,19 @@ function readPreviewLevelReward(): number | null {
 
 export function App() {
   const [screen, setScreen] = useState<AppScreen>("home");
+  const [catalog, setCatalog] = useState<CatalogMode>("indoor");
   const [catalogSelection, setCatalogSelection] = useState<string[]>([]);
-  const [progress, setProgress] = useState<GameProgress>(() => loadProgress());
+  const [progress, setProgress] = useState<GameProgress>(() => loadProgress("indoor"));
   const [previewLevelReward, setPreviewLevelReward] = useState<number | null>(() => readPreviewLevelReward());
   const plantsAvailable = useMemo(() => hasPlantsData(), []);
+  const activePlants = plantsForCatalog(catalog);
+
+  const changeCatalog = (next: CatalogMode) => {
+    if (next === catalog) return;
+    setCatalog(next);
+    setProgress(loadProgress(next));
+    setCatalogSelection([]);
+  };
 
   if (!plantsAvailable) {
     return (
@@ -54,9 +65,11 @@ export function App() {
         showHud={screen !== "home"}
       />
       <div className="mx-auto max-w-[1540px] space-y-6 px-4 py-8 sm:px-7">
+        <CatalogModeSwitch value={catalog} onChange={changeCatalog} />
         {screen === "home" && (
           <HomeScreen
-            plantsCount={plants.length}
+            catalog={catalog}
+            plantsCount={activePlants.length}
             progress={progress}
             onStartTraining={() => setScreen("training")}
             onOpenCatalog={() => setScreen("catalog")}
@@ -65,7 +78,9 @@ export function App() {
 
         {screen === "training" && (
           <TrainingScreen
-            plants={plants}
+            key={catalog}
+            catalog={catalog}
+            plants={activePlants}
             progress={progress}
             onProgressChange={setProgress}
             onBackHome={() => setScreen("home")}
@@ -74,9 +89,11 @@ export function App() {
 
         {screen === "catalog" && (
           <PlantCatalog
-            plants={plants}
+            key={catalog}
+            catalog={catalog}
+            plants={activePlants}
             selectedIds={catalogSelection}
-            title="Каталог комнатных растений"
+            title={catalog === "garden" ? "Каталог садовых растений" : "Каталог комнатных растений"}
             onTogglePlant={(plant) =>
               setCatalogSelection((current) =>
                 current.includes(plant.id)

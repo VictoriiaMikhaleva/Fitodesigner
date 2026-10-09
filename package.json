@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:unified": "node scripts/syncGardenTrainerData.mjs && vite build --base /trainer/",
+    "sync:garden": "node scripts/syncGardenTrainerData.mjs",
+    "verify:trainer": "tsx scripts/verifyTrainerModes.ts",
     "preview": "vite preview",
     "convert:plants": "tsx scripts/convertPlantsExcelToJson.ts",
     "optimize:images": "tsx scripts/optimizeImages.ts",

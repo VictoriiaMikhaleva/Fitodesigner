@@ -20,22 +20,17 @@ export function BriefCard({ brief }: BriefCardProps) {
       <p className="mt-4 text-sage-700">{brief.description}</p>
 
       <dl className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl bg-sage-50 p-3">
-          <dt className="text-xs uppercase tracking-wide text-sage-500">Свет</dt>
-          <dd className="mt-1 text-sm text-sage-800">{brief.light}</dd>
-        </div>
-        <div className="rounded-2xl bg-sage-50 p-3">
-          <dt className="text-xs uppercase tracking-wide text-sage-500">Влажность</dt>
-          <dd className="mt-1 text-sm text-sage-800">{brief.humidity}</dd>
-        </div>
-        <div className="rounded-2xl bg-sage-50 p-3">
-          <dt className="text-xs uppercase tracking-wide text-sage-500">Температура</dt>
-          <dd className="mt-1 text-sm text-sage-800">{brief.temperature}</dd>
-        </div>
-        <div className="rounded-2xl bg-sage-50 p-3">
-          <dt className="text-xs uppercase tracking-wide text-sage-500">Питомцы</dt>
-          <dd className="mt-1 text-sm text-sage-800">{brief.hasPets ? "Есть животные" : "Животных нет"}</dd>
-        </div>
+        {(brief.facts ?? [
+          { label: "Свет", value: brief.light },
+          { label: "Влажность", value: brief.humidity },
+          { label: "Температура", value: brief.temperature },
+          { label: "Питомцы", value: brief.hasPets ? "Есть животные" : "Животных нет" },
+        ]).map((fact) => (
+          <div key={fact.label} className="rounded-2xl bg-sage-50 p-3">
+            <dt className="text-xs uppercase tracking-wide text-sage-500">{fact.label}</dt>
+            <dd className="mt-1 text-sm text-sage-800">{fact.value}</dd>
+          </div>
+        ))}
       </dl>
 
       <div className="mt-5">
