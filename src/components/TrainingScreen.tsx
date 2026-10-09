@@ -4,7 +4,6 @@ import { pickGardenBrief } from "../data/gardenBriefs";
 import type { Brief, CatalogMode, Difficulty, Plant, ScoreResult, TrainingPhase } from "../types";
 import {
   applyRoundResult,
-  getLevelTitle,
   type GameProgress,
   type RoundUpdate,
 } from "../utils/gameProgress";
@@ -219,11 +218,8 @@ export function TrainingScreen({
 
       {showAchievementPopup && roundUpdate && (
         <AchievementPopup
-          achievements={roundUpdate.newAchievements}
+          roundsPlayed={roundUpdate.progress.roundsPlayed}
           xpGained={roundUpdate.xpGained}
-          leveledUp={roundUpdate.leveledUp}
-          level={roundUpdate.progress.level}
-          levelTitle={getLevelTitle(roundUpdate.progress.level)}
           onClose={() => setShowAchievementPopup(false)}
         />
       )}

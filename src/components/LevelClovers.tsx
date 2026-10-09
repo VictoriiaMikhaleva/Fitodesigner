@@ -1,20 +1,27 @@
 type LevelCloversProps = {
-  level: number;
+  count: number;
   className?: string;
 };
 
 const cloverSrc = `${import.meta.env.BASE_URL}brand/clover-four-leaf.png`;
 
-/** Visual mastery marks: one branded clover per reached level. No storage / no new rewards. */
-export function LevelClovers({ level, className = "" }: LevelCloversProps) {
-  const count = Math.max(1, Math.floor(level));
+function cloverWord(count: number): string {
+  if (count % 10 === 1 && count % 100 !== 11) return "клевер";
+  if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 12 || count % 100 > 14)) return "клевера";
+  return "клеверов";
+}
+
+/** One branded clover per completed practice. No emoji, no extra badges. */
+export function LevelClovers({ count, className = "" }: LevelCloversProps) {
+  const marks = Math.max(0, Math.floor(count));
+  if (marks === 0) return null;
 
   return (
     <ul
       className={`level-clovers ${className}`.trim()}
-      aria-label={`${count} ${count === 1 ? "клевер" : count < 5 ? "клевера" : "клеверов"} — уровень ${count}`}
+      aria-label={`${marks} ${cloverWord(marks)} за ${marks} ${marks === 1 ? "практику" : "практики"}`}
     >
-      {Array.from({ length: count }, (_, index) => (
+      {Array.from({ length: marks }, (_, index) => (
         <li key={index} className="level-clovers__item">
           <img
             className="level-clovers__mark"

@@ -9,7 +9,7 @@ import { TrainingScreen } from "./components/TrainingScreen";
 import { plantsForCatalog } from "./data/catalogs";
 import { hasPlantsData } from "./data/plantsLoader";
 import type { AppScreen, CatalogMode } from "./types";
-import { getLevelTitle, loadProgress, type GameProgress } from "./utils/gameProgress";
+import { loadProgress, type GameProgress } from "./utils/gameProgress";
 
 function readPreviewLevelReward(): number | null {
   if (!import.meta.env.DEV) return null;
@@ -108,11 +108,8 @@ export function App() {
 
       {previewLevelReward !== null && (
         <AchievementPopup
-          achievements={[]}
+          roundsPlayed={previewLevelReward}
           xpGained={12}
-          leveledUp
-          level={previewLevelReward}
-          levelTitle={getLevelTitle(previewLevelReward)}
           onClose={() => setPreviewLevelReward(null)}
         />
       )}

@@ -1,7 +1,7 @@
 import type { CatalogMode } from "../types";
-import { ACHIEVEMENTS } from "../utils/gameProgress";
 import type { GameProgress } from "../utils/gameProgress";
 import { GameHud } from "./GameHud";
+import { LevelClovers } from "./LevelClovers";
 
 type HomeScreenProps = {
   catalog: CatalogMode;
@@ -44,9 +44,6 @@ export function HomeScreen({
           ...FEATURES.slice(1),
         ]
       : FEATURES;
-  const unlocked = progress.achievements
-    .map((id) => ACHIEVEMENTS[id])
-    .filter(Boolean);
 
   return (
     <div className="space-y-6">
@@ -88,29 +85,19 @@ export function HomeScreen({
                 <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">Серия</p>
               </div>
               <div>
-                <p className="text-3xl font-medium leading-none text-sage-800">{unlocked.length}</p>
-                <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">Достижения</p>
+                <p className="text-3xl font-medium leading-none text-sage-800">{progress.roundsPlayed}</p>
+                <p className="mt-2 text-xs uppercase tracking-wide text-sage-500">Клеверы</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {unlocked.length > 0 && (
+      {progress.roundsPlayed > 0 && (
         <section className="card p-6">
-          <h3 className="text-xl font-semibold text-sage-800">Ваши достижения</h3>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {unlocked.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center gap-2 rounded-2xl border border-sage-200 bg-sage-50 px-4 py-3"
-                title={item.description}
-              >
-                <span className="text-xl">{item.icon}</span>
-                <span className="text-sm font-medium text-sage-800">{item.title}</span>
-              </div>
-            ))}
-          </div>
+          <h3 className="text-xl font-semibold text-sage-800">Ваши клеверы</h3>
+          <p className="mt-1 text-sm text-sage-600">Один клевер за каждую завершённую практику.</p>
+          <LevelClovers count={progress.roundsPlayed} className="mt-4 level-clovers--start" />
         </section>
       )}
 
