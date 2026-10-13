@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:unified": "node scripts/syncGardenTrainerData.mjs && vite build --base /trainer/",
+    "build:unified": "node scripts/syncIndoorTrainerData.mjs && node scripts/syncGardenTrainerData.mjs && vite build --base /trainer/",
+    "sync:indoor": "node scripts/syncIndoorTrainerData.mjs",
     "sync:garden": "node scripts/syncGardenTrainerData.mjs",
     "verify:trainer": "tsx scripts/verifyTrainerModes.ts",
     "preview": "vite preview",

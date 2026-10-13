@@ -11,7 +11,7 @@ type PlantCardProps = {
 function petLabel(plant: Plant): string {
   if (plant.petSafe === true) return "Безопасно для животных";
   if (plant.petSafe === false) return plant.toxicity || "Опасно для животных";
-  return "Безопасность не указана";
+  return plant.toxicity || "Безопасность не подтверждена";
 }
 
 function plantImageSrc(imageUrl: string): string {
