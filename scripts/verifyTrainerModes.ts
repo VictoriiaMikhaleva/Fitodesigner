@@ -39,8 +39,14 @@ check(
 check(indoorPlants.every((plant) => !plant.garden), "indoor cards gained a garden profile");
 check(indoorPlants.every((plant) => plant.imageUrl.startsWith("plants/")), "indoor photo path changed");
 
-check(gardenPlants.length === 135, `garden count ${gardenPlants.length}`);
-check(new Set(gardenPlants.map((plant) => plant.id)).size === 135, "garden ids are not unique");
+const GARDEN_COUNT = 164;
+const gardenSourceIds = gardenPlants.map((plant) => Number(plant.id));
+const gardenIdSet = new Set(gardenSourceIds);
+check(gardenPlants.length === GARDEN_COUNT, `garden count ${gardenPlants.length}`);
+check(gardenIdSet.size === GARDEN_COUNT, "garden ids are not unique");
+check(gardenPlants.filter((plant) => Number(plant.id) <= 139).length === 135, "legacy garden cards changed");
+check([39, 51, 52, 54].every((id) => !gardenIdSet.has(id)), "reserved garden ids were reused");
+check(Array.from({ length: 29 }, (_, index) => index + 140).every((id) => gardenIdSet.has(id)), "garden ids 140-168 are incomplete");
 check(gardenPlants.every((plant) => plant.garden?.sourceId === Number(plant.id)), "garden id link broken");
 check(
   gardenPlants.every((plant) => plant.imageUrl === `/garden/assets/plants/${plant.garden?.sourceId}.webp`),
@@ -73,12 +79,12 @@ check(new Set(peonies.map((plant) => plant.imageUrl)).size === peonies.length, "
 check(new Set(peonies.map((plant) => plant.garden?.color)).size === peonies.length, "peony colors collide");
 
 const visible = filterGardenPlants(gardenPlants, DEFAULT_FILTERS);
-check(visible.length === 135, `default garden filter hid cards: ${visible.length}`);
+check(visible.length === GARDEN_COUNT, `default garden filter hid cards: ${visible.length}`);
 
 const rounds = Array.from({ length: 12 }, (_, index) => orderGardenPlants(gardenPlants, index));
-check(rounds.every((round) => round.length === 135), "a round dropped cards");
+check(rounds.every((round) => round.length === GARDEN_COUNT), "a round dropped cards");
 check(
-  rounds.every((round) => new Set(round.map((plant) => plant.id)).size === 135),
+  rounds.every((round) => new Set(round.map((plant) => plant.id)).size === GARDEN_COUNT),
   "a round repeated an id",
 );
 
