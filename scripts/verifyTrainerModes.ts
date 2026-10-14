@@ -45,14 +45,14 @@ check(
 check(indoorPlants.every((plant) => !plant.garden), "indoor cards gained a garden profile");
 check(indoorPlants.every((plant) => plant.imageUrl.startsWith("plants/")), "indoor photo path changed");
 
-const GARDEN_COUNT = 164;
+const GARDEN_COUNT = 184;
 const gardenSourceIds = gardenPlants.map((plant) => Number(plant.id));
 const gardenIdSet = new Set(gardenSourceIds);
 check(gardenPlants.length === GARDEN_COUNT, `garden count ${gardenPlants.length}`);
 check(gardenIdSet.size === GARDEN_COUNT, "garden ids are not unique");
 check(gardenPlants.filter((plant) => Number(plant.id) <= 139).length === 135, "legacy garden cards changed");
 check([39, 51, 52, 54].every((id) => !gardenIdSet.has(id)), "reserved garden ids were reused");
-check(Array.from({ length: 29 }, (_, index) => index + 140).every((id) => gardenIdSet.has(id)), "garden ids 140-168 are incomplete");
+check(Array.from({ length: 49 }, (_, index) => index + 140).every((id) => gardenIdSet.has(id)), "garden ids 140-188 are incomplete");
 check(gardenPlants.every((plant) => plant.garden?.sourceId === Number(plant.id)), "garden id link broken");
 check(
   gardenPlants.every((plant) => plant.imageUrl === `/garden/assets/plants/${plant.garden?.sourceId}.webp`),
@@ -171,7 +171,7 @@ const random = () => {
 };
 const seenPeonyColors = new Set<string>();
 let questionIssues = 0;
-for (let index = 0; index < 400; index += 1) {
+for (let index = 0; index < 2000; index += 1) {
   const shown = gardenPlants[Math.floor(random() * gardenPlants.length)];
   const options = [shown.nameRu];
   const used = new Set([shown.nameRu]);

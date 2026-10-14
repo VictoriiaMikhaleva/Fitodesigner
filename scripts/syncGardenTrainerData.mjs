@@ -66,7 +66,7 @@ if (start < 0 || end < 0) {
 }
 
 const plants = JSON.parse(source.slice(start + marker.length, end).trim().replace(/;\s*$/, ""));
-const EXPECTED_GARDEN_COUNT = 164;
+const EXPECTED_GARDEN_COUNT = 184;
 const LEGACY_EXCLUDED_IDS = new Set([39, 51, 52, 54]);
 if (!Array.isArray(plants) || plants.length !== EXPECTED_GARDEN_COUNT) {
   throw new Error(`Ожидалось ${EXPECTED_GARDEN_COUNT} садовых карточек, получено ${plants.length}`);
@@ -79,7 +79,7 @@ const legacyIds = sourceIds.filter((id) => id <= 139);
 if (legacyIds.length !== 135 || legacyIds.some((id) => LEGACY_EXCLUDED_IDS.has(id))) {
   throw new Error("Исходные 135 карточек изменились или занят зарезервированный id");
 }
-for (let id = 140; id <= 168; id += 1) {
+for (let id = 140; id <= 188; id += 1) {
   if (!sourceIds.includes(id)) throw new Error(`В каталоге нет новой карточки id ${id}`);
 }
 
