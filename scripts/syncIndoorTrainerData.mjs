@@ -7,7 +7,7 @@ const catalogFile = path.resolve(root, "../Choose_your_plant/plant_selector_cata
 const photoDir = path.resolve(root, "../Choose_your_plant/assets/plants");
 const plantsFile = path.resolve(root, "src/data/plants.json");
 const trainerPhotoDir = path.resolve(root, "public/plants");
-const EXPECTED = 127;
+const EXPECTED = 147;
 
 function plantSlug(nameLat) {
   return String(nameLat || "")

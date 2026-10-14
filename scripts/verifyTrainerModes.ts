@@ -28,13 +28,19 @@ function fileExists(directory: string, fileName: string): boolean {
   return fs.existsSync(path.join(directory, fileName));
 }
 
-check(indoorPlants.length === 127, `indoor count ${indoorPlants.length}`);
-check(new Set(indoorPlants.map((plant) => plant.id)).size === 127, "indoor ids are not unique");
+check(indoorPlants.length === 147, `indoor count ${indoorPlants.length}`);
+check(new Set(indoorPlants.map((plant) => plant.id)).size === 147, "indoor ids are not unique");
 const unconfirmed = indoorPlants.filter((plant) => /-(113|114)$/.test(plant.id));
 check(unconfirmed.length === 2, `unconfirmed pet-safety cards ${unconfirmed.length}`);
 check(
   unconfirmed.every((plant) => plant.petSafe !== true),
   "Pilea depressa or Ceropegia woodii marked pet-safe",
+);
+const unconfirmedPet = indoorPlants.filter((plant) => plant.petSafe === null);
+check(unconfirmedPet.length === 11, `unconfirmed petSafe=null cards ${unconfirmedPet.length}`);
+check(
+  unconfirmedPet.every((plant) => plant.toxicity === "Безопасность не подтверждена"),
+  "unconfirmed plants have the wrong toxicity label",
 );
 check(indoorPlants.every((plant) => !plant.garden), "indoor cards gained a garden profile");
 check(indoorPlants.every((plant) => plant.imageUrl.startsWith("plants/")), "indoor photo path changed");
